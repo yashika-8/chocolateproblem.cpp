@@ -1,0 +1,28 @@
+class Solution {
+public:
+    string simplifyPath(string path) {
+        string token ="";
+        stringstream ss(path);
+        stack<string> temp;
+        while(getline(ss,token,'/')){
+            if(token==""|| token=="."){
+                continue;
+            }
+            if(token!=".."){
+                temp.push(token);
+            }
+            else if(!temp.empty()){
+                temp.pop();
+            }
+        }
+        if(temp.empty()){
+            return "/";
+        }
+        string result="";
+        while(!temp.empty()){
+            result="/" + temp.top() + result;
+            temp.pop();
+        } 
+        return result;
+    }
+};
