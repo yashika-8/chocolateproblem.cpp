@@ -1,0 +1,23 @@
+class Solution {
+public:
+    bool isHappy(int n) {
+        unordered_set<int> umap;
+        while(true){
+            int sum=0;
+            while(n!=0){
+                sum=sum+pow(n%10,2.0);
+                n=n/10;
+            }
+            if(sum==1){
+                return true;
+            }
+            else{
+                n=sum;
+            }
+            if(umap.contains(n)){
+                return false;
+            }
+            umap.insert(n);
+        }
+    }
+};
