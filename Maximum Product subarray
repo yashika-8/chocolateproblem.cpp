@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int maxProduct(vector<int>& nums) {
+        if(nums.size()==0){
+            return 0;
+
+        }
+        int max_prod=nums[0];
+        int min_prod=nums[0];
+        int result=nums[0];
+        
+        for(int i=1;i<nums.size();i++){
+            if(nums[i]<0){
+                swap(max_prod,min_prod);
+            }
+        max_prod=std::max(nums[i],max_prod*nums[i]);
+        min_prod=std::min(nums[i],min_prod*nums[i]);
+        result=max(max_prod,result);
+    }
+    return result;
+    }
+};
